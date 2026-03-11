@@ -113,6 +113,7 @@ export default function Page() {
   const [active, setActive] = useState<Tab>('dev')
   const [hovered, setHovered] = useState<Tab | null>(null)
   const [atTop, setAtTop] = useState(true)
+  const [autoStopped, setAutoStopped] = useState(false)
   const [progress, setProgress] = useState(0)
   const [arrows, setArrows] = useState<Arrow[]>([])
   const [scrambleTexts, setScrambleTexts] = useState<Record<string, string>>({})
@@ -132,9 +133,6 @@ export default function Page() {
   const pageRef = useRef<HTMLDivElement>(null)
   const cloudRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef(0)
-  const globalStartRef = useRef(0)   // when auto-advance sequence began
-  const cycleStartRef = useRef(0)    // when current cycle began
-  const cycleDurRef = useRef(300)    // current cycle duration in ms
 
   // Store refs in a single mutable object
   const logoRefs = useRef<Record<string, HTMLElement | null>>({})
@@ -257,52 +255,37 @@ export default function Page() {
     return () => el.removeEventListener('scroll', onScroll)
   }, [])
 
-  // ─── Auto-advance timer ────────────────────────────────────────
-  // Speed: 0.3s → 4s over first 5 seconds, then stays at 4s
+  // ─── Auto-advance: one pass through all tabs in 2s, stop on naming ──
 
-  const calcDuration = useCallback((globalElapsed: number) => {
-    const t = Math.min(globalElapsed / 5000, 1) // 0..1 over 5 seconds
-    return 300 + 3700 * t // 300ms → 4000ms
-  }, [])
+  const STOP_AT = ORDER.indexOf('naming') // index 5
+  const STEP_MS = 2000 / STOP_AT // ~400ms per step
 
   useEffect(() => {
-    if (!atTop) {
-      setProgress(0)
-      cancelAnimationFrame(rafRef.current)
-      return
-    }
-
-    const now = performance.now()
-    if (!globalStartRef.current) globalStartRef.current = now
-    cycleStartRef.current = now
-    cycleDurRef.current = calcDuration(now - globalStartRef.current)
+    if (autoStopped) return
+    const start = performance.now()
 
     const tick = (t: number) => {
-      const p = Math.min((t - cycleStartRef.current) / cycleDurRef.current, 1)
-      setProgress(p)
-      if (p >= 1) {
-        setActive(prev => {
-          const i = ORDER.indexOf(prev)
-          return ORDER[(i + 1) % ORDER.length]
-        })
-        cycleStartRef.current = t
-        cycleDurRef.current = calcDuration(t - globalStartRef.current)
+      const elapsed = t - start
+      const step = Math.min(Math.floor(elapsed / STEP_MS), STOP_AT)
+      setActive(ORDER[step] ?? 'naming')
+      if (step >= STOP_AT) {
         setProgress(0)
+        setAutoStopped(true)
+        return
       }
+      setProgress((elapsed % STEP_MS) / STEP_MS)
       rafRef.current = requestAnimationFrame(tick)
     }
     rafRef.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafRef.current)
-  }, [atTop, calcDuration]) // no `active` — setActive uses functional form, no restart needed
+  }, [autoStopped])
 
-  // Reset timer on manual click
+  // Manual click stops auto-advance and selects tab
   const select = useCallback((tab: Tab) => {
+    setAutoStopped(true)
     setActive(tab)
-    const now = performance.now()
-    cycleStartRef.current = now
-    cycleDurRef.current = calcDuration(now - globalStartRef.current)
     setProgress(0)
-  }, [calcDuration])
+  }, [])
 
   // ─── Dev "select then retype" effect ──────────────────────────
 
