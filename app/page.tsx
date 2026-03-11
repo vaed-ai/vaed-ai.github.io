@@ -927,6 +927,13 @@ function AssocContent({ colors }: { colors: Colors }) {
           æ() следует тому же принципу: восприятие порождает реальность.
         </p>
       </TheoryBlock>
+      <div style={{
+        fontFamily: '"Georgia", "Cambria", serif',
+        fontSize: 12, color: colors.active, opacity: 0.4,
+        fontStyle: 'italic', padding: '4px 0 0 20px',
+      }}>
+        Никто не способен выйти за рамки собственного Восприятия, по той причине что их нет. (а) V
+      </div>
 
       <TheoryBlock title="I. Единое поле" colors={colors}>
         Все сущности — в одном пространстве. Единый граф вместо таблиц и коллекций.
