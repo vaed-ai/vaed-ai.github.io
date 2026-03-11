@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>væd.ai — Инвестору</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, Cambria, serif; color: #1a1a1a; background: #fff; line-height: 1.7; padding: 48px 24px 64px; max-width: 700px; margin: 0 auto; }
+  .dim { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #999; }
+  .sub { font-size: 11px; color: #999; margin-top: 4px; }
+  h1 { font-size: 28px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 4px; }
+  h2 { font-size: 15px; font-weight: 700; margin-top: 36px; margin-bottom: 10px; opacity: 0.9; }
+  p { font-size: 13px; opacity: 0.85; margin-top: 8px; line-height: 1.85; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 32px 0; }
+  .accent { font-size: 14px; opacity: 0.9; line-height: 1.85; }
+  .quote { font-size: 13px; opacity: 0.75; padding: 10px 0 10px 20px; border-left: 2px solid #ddd; margin-top: 12px; font-style: italic; }
+  .formula { font-family: "Courier New", monospace; font-size: 12px; opacity: 0.6; padding: 10px 0 10px 20px; border-left: 2px solid #ddd; margin-top: 10px; white-space: pre-wrap; letter-spacing: 0.03em; line-height: 1.7; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #eee; }
+  th { font-weight: 400; color: #999; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; }
+  .tag { display: inline-block; font-family: monospace; font-size: 10px; letter-spacing: 0.1em; border: 1px solid #ccc; padding: 3px 10px; margin: 3px 4px 3px 0; }
+  .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #ddd; font-family: monospace; font-size: 10px; color: #999; letter-spacing: 0.15em; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #000; color: #e5e5e5; }
+    .dim, .sub, th { color: #555; }
+    hr, th, td { border-color: #222; }
+    .quote, .formula { border-color: #333; }
+    .tag { border-color: #333; color: #aaa; }
+    .footer { border-color: #222; color: #444; }
+  }
+</style>
+</head>
+<body>
+
+<div style="text-align: center; margin-bottom: 36px;">
+  <h1>væd.ai</h1>
+  <div class="sub">Будь Всеведущ</div>
+</div>
+
+<hr>
+
+<h2>Почему сейчас</h2>
+<p class="accent">
+  ИИ-модели генерируют код — им нужна среда, в которой этот код живёт, связан и наблюдаем.
+  væd.ai — единственный проект, где ИИ и Человек воспринимают одно и то же поле одновременно.
+  Фреймворк готов к масштабированию: от аналитики данных до пилотирования дрона — один æ().
+</p>
+
+<h2>Что это</h2>
+<p class="accent">
+  Единственный фреймворк, способный отображать все поля данных целиком —
+  что вычислено, какой формулой, и с чем связано.
+  Ассоциативная среда восприятия для Людей и Иного Интеллекта.
+</p>
+
+<div class="quote">
+  Одна функция æ() — воспринять, ассоциировать, вычислить, отобразить.
+  Единый граф вместо таблиц, моделей и хранилищ.
+</div>
+
+<h2>Проблема</h2>
+<p>
+  Данные изолированы. Excel скрывает формулы за ячейками. Базы данных разделяют хранение и отображение.
+  Переключение между контекстами — потеря ориентации.
+  Гибридное наблюдение — одновременное отображение формул, данных, связей — отсутствует.
+</p>
+
+<h2>Решение</h2>
+<p>
+  væd.ai визуализирует Восприятие: смотри на то, что нужно — переключай фокус свободно.
+  Контекст сохраняется при переключении внимания. Вокруг основного Поля Восприятия
+  закрепляются другие Поля — Внешнее Внимание удерживает весь калейдоскоп задач.
+</p>
+<p>
+  «Отобрази это так» — ИИ генерирует React-компоненты в любом пространстве: web, 2D, 3D, VR.
+  Поле Восприятия переносится в оболочку управления роботами и механизированными системами.
+  Каждая мысль связана по смыслу со всем контекстом деятельности — ни один творческий акт не потерян.
+</p>
+
+<h2>Технология</h2>
+
+<table>
+  <tr><th>Свойство</th><th>Что это значит</th></tr>
+  <tr><td>Единое поле</td><td>Все сущности — в одном графе. Сущности суть возбуждения поля.</td></tr>
+  <tr><td>Живой код</td><td>æ() — одновременно запись, событие и вычисление. Структура и исполнение — одно.</td></tr>
+  <tr><td>Реактивность</td><td>Точечные инкрементальные обновления. push(x) в source → одна операция в result.</td></tr>
+  <tr><td>Детерминистичные ID</td><td>UUID v5 от содержимого — конвергенция без координации между пользователями.</td></tr>
+  <tr><td>Синхронизация</td><td>IndexedDB, PostgreSQL, FS, блокчейн — или всё одновременно.</td></tr>
+  <tr><td>Телепатия</td><td>HTTP, WebSocket, WebRTC, IPC — изменение в одном æ мгновенно в другом.</td></tr>
+</table>
+
+<h2>Платформы</h2>
+<div style="margin-top: 12px;">
+  <span class="tag">npm</span>
+  <span class="tag">CLI / REPL</span>
+  <span class="tag">Web</span>
+  <span class="tag">Desktop</span>
+  <span class="tag">Mobile</span>
+  <span class="tag">VR / WebXR</span>
+  <span class="tag">Chrome ext</span>
+  <span class="tag">Firefox ext</span>
+  <span class="tag">VSCode / Cursor</span>
+  <span class="tag">Espruino</span>
+  <span class="tag">.apk</span>
+  <span class="tag">.ipa</span>
+  <span class="tag">.wasm</span>
+  <span class="tag">væd.os — live USB</span>
+</div>
+
+<div class="formula">∀ platform : æ(platform) ≅ æ</div>
+
+<h2>Бизнес-модель</h2>
+<p>
+  Код свободен — Unlicense, общественное достояние. Форкнуть можно.
+  Каноническая сеть — одна. Мы продаём сервис, инфраструктуру и бренд.
+</p>
+
+<table>
+  <tr><th>Направление</th><th>Модель</th></tr>
+  <tr><td>Инфраструктура</td><td>Dedicated и Shared instances — региональные ноды для бизнеса</td></tr>
+  <tr><td>Крипто</td><td>VAEDS token на Solana — создание ассоциации стоит vaeds, использование чужих связей компенсирует создателя</td></tr>
+  <tr><td>Вечная сеть</td><td>On-chain реестр ассоциаций — любая договорённость зафиксирована навсегда</td></tr>
+  <tr><td>Спонсорство</td><td>GitHub Sponsors, Boosty, Patreon, крипто-донаты</td></tr>
+</table>
+
+<h2>Что уже есть</h2>
+
+<table>
+  <tr><th>Актив</th><th>Статус</th></tr>
+  <tr><td>Домен vaed.ai</td><td>Наш</td></tr>
+  <tr><td>GitHub org vaed-ai</td><td>Наш</td></tr>
+  <tr><td>npm org vaed-ai</td><td>Наш</td></tr>
+  <tr><td>Ядро: æ(), ассоциации, proxy, эффекты, типы</td><td>Работает</td></tr>
+  <tr><td>Реактивные Array, Set, Map — инкрементально</td><td>Работает</td></tr>
+  <tr><td>CLI / REPL</td><td>Работает</td></tr>
+  <tr><td>Сайт væd.ai</td><td>Работает</td></tr>
+  <tr><td>Telegram @vaedai / @vaedai_bot</td><td>Работают</td></tr>
+</table>
+
+<div class="quote">
+  Восприятие первично. Данные — проекция. Наблюдатель — часть поля.
+</div>
+
+<hr>
+
+<div class="footer">
+  væd.ai · Unlicense · Код свободен, сеть канонична
+</div>
+
+</body>
+</html>
