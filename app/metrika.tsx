@@ -29,9 +29,5 @@ export function Metrika() {
     return () => { script.remove() }
   }, [])
 
-  return (
-    <noscript>
-      <img src={`https://mc.yandex.ru/watch/${ID}`} style={{ position: 'absolute', left: -9999 }} alt="" />
-    </noscript>
-  )
+  return null
 }
