@@ -35,6 +35,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const resolved = mounted ? theme : 'dark'
 
+  useEffect(() => {
+    const bg = resolved === 'dark' ? '#000' : '#fff'
+    document.documentElement.style.backgroundColor = bg
+    document.body.style.backgroundColor = bg
+  }, [resolved])
+
   return (
     <Ctx.Provider value={{ theme: resolved, toggle }}>
       <div data-vaed="" data-theme={resolved} style={{ height: '100%' }}>
